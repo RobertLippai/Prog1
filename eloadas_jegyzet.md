@@ -1,0 +1,1 @@
+# Előadás Jegyzet Első hét
