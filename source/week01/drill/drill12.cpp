@@ -6,7 +6,7 @@
 
 double one(double) { return 1; }
 
-double square(double x) { return x*x; }
+double square(double x) { return x*x*-1; }
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
     
     int n_points = 400;
 
-    Simple_window win {Point{100,100}, xmax, ymax, "Canvas"};
+    Simple_window win {Point{100,100}, xmax, ymax, "Drill 12"};
 
 	Point origo {x_orig, y_orig};
 
@@ -34,27 +34,40 @@ int main()
 
 	Function s (one, rmin, rmax, origo, n_points, xscale, yscale);
 	Function sq (square, rmin, rmax, origo, n_points, xscale, yscale);
-	Function cos_func ( [] (double x) { return cos(x); },
+	Function sin_func ( [] (double x) { return sin(x); },
 						rmin, rmax, origo, n_points, xscale, yscale);
 
 	Axis x {Axis::x, Point{20, y_orig}, xlength, xlength/xscale, "x"};
 	Axis y {Axis::y, Point{x_orig, ylength + 20}, ylength, ylength/yscale, "y"};
 
-	Rectangle r {Point{200,200}, 100, 50};
+	y.set_color(Color::cyan);
+	y.label.set_color(Color::dark_red);
 
-	r.set_fill_color(Color::yellow);
-	r.set_style(Line_style(Line_style::dash, 4));
+	Polygon poly;
 
-	Text t {Point{200,400}, "Hello graphics!"};
+	poly.add(Point{300,200});
+	poly.add(Point{350,100});
+	poly.add(Point{400,200});
+
+	poly.set_color(Color::green); 
+	poly.set_style(Line_style::dash); 
+	poly.set_fill_color(Color::yellow);
+	
+	Rectangle r {Point{200,200}, 200, 100};
+
+	r.set_fill_color(Color::red);
+	r.set_style(Line_style(Line_style::dash, 5));
+
+	Text t {Point{200,400}, "Drill 12!"};
 	t.set_font(Font::times_bold);
-	t.set_font_size(20);
+	t.set_font_size(35);
 
 	Image ii {Point{100,100}, "badge.jpg"};
 
-	Circle c {Point{700,700}, 100};
+	Circle c {Point{700,700}, 150};
 
 	Ellipse e {Point{500,500}, 100, 50};
-	e.set_fill_color(Color::red);
+	e.set_fill_color(Color::blue);
 
 	win.attach(e);
 	win.attach(ii);
@@ -63,9 +76,10 @@ int main()
 	win.attach(r);
 	win.attach(s);
 	win.attach(sq);
-	win.attach(cos_func);
+	win.attach(sin_func);
 	win.attach(x);
 	win.attach(y);
+	win.attach(poly);
 
     win.wait_for_button();
 
