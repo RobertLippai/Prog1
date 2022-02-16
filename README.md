@@ -18,7 +18,7 @@
 <tr>
 	<td>Week 2</td>
 	<td>Ch13</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Marc 4.</td>
 </tr>
 <tr>
@@ -56,6 +56,24 @@
 	<td>Ch21</td>
 	<td>❌</td>
 	<td>Ápr 22.</td>
+</tr>
+<tr>
+	<td>Week 9</td>
+	<td>Ch21</td>
+	<td>❌</td>
+	<td>Ápr 22.</td>
+</tr>
+<tr>
+	<td>Week 10</td>
+	<td>Ch24</td>
+	<td>❌</td>
+	<td>Ápr 22.</td>
+</tr>
+<tr>
+	<td>Week 12</td>
+	<td>Ch27</td>
+	<td>❌</td>
+	<td>Ápr 29.</td>
 </tr>
 </table>
 </div>

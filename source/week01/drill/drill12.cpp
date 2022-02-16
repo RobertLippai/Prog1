@@ -1,5 +1,5 @@
 /*
-    g++ drill12.cpp ../../gui/Graph.cpp ../../gui/Window.cpp ../../gui/GUI.cpp ../../gui/Simple_window.cpp -o drill12 `fltk-config --ldflags --use-images` -std=c++11 && ./drill12
+    g++ drill12.cpp ../../gui/Graph.cpp ../../gui/Window.cpp ../../gui/GUI.cpp ../../gui/Simple_window.cpp -o drill12.out `fltk-config --ldflags --use-images` -std=c++11 && ./drill12.out
 */
 #include "../../gui/Simple_window.h"
 #include "../../gui/Graph.h"
