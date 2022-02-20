@@ -76,3 +76,43 @@ Csak akkor includolja ha még nincs be includeolva.
 
 ## inline
 Nem függvényként hívja, hanem folytatólagos lesz a vezérlés. Így nincs erőforrásugrás.
+
+
+
+
+# Előadás Jegyzet Harmadik hét - OO 
+Shape osztály főként absztrakció. Belőle tehát nem lehet példányt, objektumot készíteni.
+(Constructore a protected)
+
+Egy adott függvény ami adott feladatot csinál, annak minden osztályban ugyanaz lesz a neve.
+Ami logikailag különbözően működik, annak legyen különböző neve.
+
+A grafikus objektumokat nem jó másolni, referenciát kell használni.
+
+Az adatok elrejtése, hogyne lehessen rosszra módosítani. (Pl. legyen radius privát, legyen egy set_radius függvény és ebben hibakezelés, hogy ne lehessen negítvra módosítani. )
+
+Publikus tagok: az interface az osztályhoz
+Privát: belső, az implementáció
+
+## Miért jó a private?
+Változhat az implementáció, könnyebb lecserélni a library-t.
+Az implementációs részbe, így már ellenörzöt adat kerül. 
+Az implementációs rész elrejtése.
+
+## Protected: Olyan mint a privát, de a leszármazott osztályok elérik, az ősosztály protected részét.
+
+## Library: osztályok és függvények gyűjteménye, Építőkövek
+
+## Virtual calll, a hívóoldal tudja, hogy melyik leszármazott függvényét kell hívni
+
+virtual double increase(int i) = 0; //muszáj definiálni ezt  a függvényt egy leszármazotban.
+
+virtual destructor (Meghívja a virtual függvény desktructorát. (Pointer, heap memória))
+
+Másoló konstruktor és másoló értékadás letíltása (=delete)
+
+## Override check szó: Hibát jelez fordításkor, ha nem lehet felüldefiniálni
+
+## Referencia: új név, ugyanarra az objektumra, csak más néven hivatkozunk rá.
+
+## Pointer-nél nyilat használunk nem pontot.
