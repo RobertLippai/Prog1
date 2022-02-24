@@ -24,7 +24,7 @@
 <tr>
 	<td>Week 3</td>
 	<td>Ch14</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Marc 11.</td>
 </tr>
 <tr>
