@@ -5,6 +5,11 @@
 #include "../../gui/Simple_window.h"
 #include "../../gui/Graph.h"
 
+double one(double x){ return 1; }
+
+double slope(double x){ return x/2; }
+
+double square(double x){ return x*x; }
 int main()
 {
 	int max_width = 600;
@@ -26,6 +31,19 @@ int main()
 	int ylength = max_height - 40;
 
 	int xscale = 30, yscale = 30;
+
+	Function s(one, rmin, rmax, origo, n_points, xscale, yscale);
+
+	Function sl(slope, rmin, rmax, origo, n_points, xscale, yscale);
+
+	Function sq(square, rmin, rmax, origo, n_points, xscale, yscale);
+
+	Function sl_cos([] (double x) { return cos(x) + slope(x); }, rmin, rmax, origo, n_points, xscale, yscale);
+
+	win.attach(s);
+	win.attach(sl);
+	win.attach(sq);
+	win.attach(sl_cos);
 
 	win.wait_for_button();
 }

@@ -1,3 +1,7 @@
+/*
+g++ chapter14.cpp -o chapter14.out -std=c++11 && ./chapter14.out
+*/
+
 #include "../../gui/std_lib_facilities.h"
 
 
