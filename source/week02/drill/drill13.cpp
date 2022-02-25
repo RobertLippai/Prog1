@@ -18,11 +18,10 @@ int main()
 
 	//Task 1
 	Simple_window win {Point{100,100}, xmax, ymax, "Drill 13"};
-
-
-	Lines grid;
 	
 	//Task 2
+	Lines grid;
+
 	for (int x = x_grid; x < xmax; x += x_grid){
 		grid.add(Point{x, 0},Point{x, ymax});
 	}
@@ -50,9 +49,7 @@ int main()
 	
 	for (int i = 0; i < 4; i++) {
 		int cordX = 200 * (i+1);
-		if (i == 0){
-			cordX = 200;
-		}
+
 		images.push_back(new Image {Point{cordX, 200*i}, "linux.gif"});
 		win.attach(images[images.size() - 1]);
 	}
