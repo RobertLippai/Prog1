@@ -23,7 +23,7 @@ public:
 };
 
 struct D1 : B1 {
-	void vf() const override{
+	void vf() const override {
 		cout << "D1::vf()\n";	
 	}
 
@@ -31,7 +31,7 @@ struct D1 : B1 {
 		cout << "D1::f()\n";	
 	}
 
-	void pvf() const{
+	void pvf() const override {
 		cout << "D1::pvf()\n";	
 	}
 };
@@ -51,7 +51,7 @@ public:
 struct D21 : B2{
 	string s = "teszt";
 
-	void pvf(){
+	void pvf() override {
 		cout << "D21:" + s + "\n";
 	};
 };
@@ -59,7 +59,7 @@ struct D21 : B2{
 struct D22 : B2{
 	int i = 0;
 
-	void pvf(){
+	void pvf() override {
 		cout << "D22:" + to_string(i) + "\n";
 	};
 };
@@ -73,7 +73,7 @@ int main(){
 	//Task 1
 	/*cout << "Calling B1 Obj\n";
 
-	B1 b1_obj = B1(){};
+	B1 b1_obj = B1();
 
 	b1_obj.vf();
 	b1_obj.f();*/
