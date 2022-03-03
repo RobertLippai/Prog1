@@ -22,6 +22,7 @@ int main()
 	int rmax = 11;
 
 	int n_points = 400;
+
 	
 	Simple_window win {Point{100,100}, max_width, max_height, "Template File"};
 
@@ -40,10 +41,33 @@ int main()
 
 	Function sl_cos([] (double x) { return cos(x) + slope(x); }, rmin, rmax, origo, n_points, xscale, yscale);
 
+
+	/*
+
+	Marks
+
+	*/
+
+	Marks mpl("prog1");
+	//Marks mpl("prog1");
+	//Marked_polyline mpl("prog1");
+	mpl.add(Point{100,100});
+	mpl.add(Point{200,150});
+	mpl.add(Point{300,100});
+	mpl.add(Point{100,200});
+	mpl.add(Point{300,500});
+
+
+	Mark m(Point{300,300}, 'x');
+
 	win.attach(s);
 	win.attach(sl);
 	win.attach(sq);
 	win.attach(sl_cos);
+	win.attach(mpl);
+	win.attach(m);
 
 	win.wait_for_button();
 }
+
+
