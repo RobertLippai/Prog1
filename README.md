@@ -30,7 +30,7 @@
 <tr>
 	<td>Week 4</td>
 	<td>Ch15</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Marc 18.</td>
 </tr>
 <tr>

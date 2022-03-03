@@ -116,3 +116,30 @@ Másoló konstruktor és másoló értékadás letíltása (=delete)
 ## Referencia: új név, ugyanarra az objektumra, csak más néven hivatkozunk rá.
 
 ## Pointer-nél nyilat használunk nem pontot.
+
+# Előadás Jegyzet Negyedik hét
+
+Function (föggvény, range(x0-xN), első pont, egyéb);
+n_points: hány pontot
+x_scale, y_scale: mekkora legyen a függvény
+
+Constansokat fontos használni!
+
+Fct double paramétert vár és double-al tér vissza
+
+## Marks: a polylineok törésvonalaknak helyére teszünk egy kis jelzőt (stringet)
+Az átadott stringet, betűnkönt hozzápárosítjuk a polylineok töréspontjához (ahol a pont van).
+
+c_str() ez egy karakter pointer
+
+## Image:
+Konstruktor: Kezdőpont, String (Fájlnév), Encoding
+
+## Map: string kulcs, stuffix az érték olyan mint a Python dictionary
+
+Iterator, a string annak az elemére mutat ahol a megadott char van.
+s.end() végigment a stringen, de nincs meg a keresett char
+
+# TODO: Stuffix keresést a végétől kezdeni, hogy elérési utvonalakkal is működjön
+
+## Pure Virtual Function: Olyan osztály, amiben megtalálható a pure virtual function, annak nem lehet példánya! Így az osztály absztrakt!
