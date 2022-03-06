@@ -143,3 +143,66 @@ s.end() végigment a stringen, de nincs meg a keresett char
 # TODO: Stuffix keresést a végétől kezdeni, hogy elérési utvonalakkal is működjön
 
 ## Pure Virtual Function: Olyan osztály, amiben megtalálható a pure virtual function, annak nem lehet példánya! Így az osztály absztrakt!
+
+
+# Előadás Jegyzet Ötödik hét - GUI
+A GUI egy Input/Output eszköz
+A legtöbb átlagfelhasználói program GUI-val rendelkezik
+
+Event drive -  a program vár egy eseményre, hogy folytassa a működését / futasson valamit
+
+GUI részei: 
+	* Gombok
+	* Textfield
+	* Radio buttons
+
+Feladatai:
+	* szövegek, számok megjelenítése
+	* alakzatok, stílus, szín
+	* egér követése, drag n drop, kéziárás felismerése
+
+## Itt már a lines_window-ot fogjuk használni.
+
+Widget: Valamilyen működésre képes dolog (Gomb, Textfield stb)
+A button egy widget. (Szín, outline, text)
+Ha rákattintunk a gombra egy callback triggerelődik. 
+
+Gomb(Point xy, int w, int h, string felirat, callback )
+
+Quit(ablak_címe(melyikbe nyomtuk meg)) és annak az ablaknak kell meghívni a megfelelő függvényét.
+
+
+#include "gui.h", ha használni akarunk gombokat
+
+static void -- tudjuk hívni objektum példány nélkül is
+
+reference_to a memória címet átalakítja egy simple-window tagra és azon hívja meg
+Simple_window(Point xy, int w, int h, const string& title );
+
+
+
+Window::Window(Point xy, int ww, int hh, const string& title)
+:Fl_Window(xy.x,xy.y,ww,hh,title.c_str()),w(ww),h(hh)
+{ 
+	init();
+}
+
+Itt a w a tag, a ww amit a konstruktorból kapunk.
+
+unsigned int -- előjel nélküli típus, nem lehet negatív
+
+## inline nem ugrik a vezérlés, hanem folytatólagos a hívott helyen
+A lefordított kódban már nem a hívott függvényre található, hanem a hívott függvényben lévő kód!
+
+Általában ősosztályoknál leszoktuk a másolást tiltani. Ezért pointert vagy referenciát hazsnálunk, ha pl. egy vectorba szeretnénk tenni. 
+
+## Slicing: a leszármazott osztály tegjai nem jelennének meg, amik nincsenek benne az ősosztályban. Pl. Shape ősosztály, Shape vector, 
+Kör a leszármazott a kör sugara és egyéb paramétere nem lenne benne a Shape vectorban így.
+
+## void* egy olyan memóricím ami valamilyen memóriácímre mutat
+## függvény pointer: így regisztráljuk itt a gombhoz a függvényt. Átadjuk a gombnak a függvény memóricímét. Ez hasznos, 
+ha van valami aminek szeretnénk átadni egy függvényt. A függvény memória címét pedig könnyű átadni.
+## reference_to: egy memória címből csinál egy tetszőleges referenciatípust.
+## widgeteknél is levan tiltva a másolás
+
+## GUI.h, Menu widget, ez kell majd a drillhez.
