@@ -36,7 +36,7 @@
 <tr>
 	<td>Week 5</td>
 	<td>Ch16</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Marc 25.</td>
 </tr>
 <tr>
