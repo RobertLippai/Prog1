@@ -206,3 +206,48 @@ ha van valami aminek szeretnénk átadni egy függvényt. A függvény memória 
 ## widgeteknél is levan tiltva a másolás
 
 ## GUI.h, Menu widget, ez kell majd a drillhez.
+
+
+# C++ Memóriakezelés ismétlés:
+A vektor az alapértelmezett tároló c++-ban. 
+Memória: semmi ellenörzés, semmi rugalmasság de cserébe nagyon gyors
+
+## Pointerek:
+
+A pointer egy memóriacím. 
+A memória byte-onként van címezve. 
+
+Jele: *
+pl double*: ez egy olyan memóriacím ami egy double típusu objektum memória címét tárolja___*
+
+## Free Store:
+Hasznos ha pl. szeretnénk, hogy túlélje a scope-ot amiben foglaltuk.
+
+Ha pl 7 dolognak foglalunk így memóriát, akkor a pointer mindig a legelső elem címét adja vissza!
+De szépen egymás után fognak következni, ezért ha léptetjük byte-onként a következő elemet kapjuk meg.
+
+A pointer nem tudja, hogy hány elemre mutat. Csak a memória címet tudja!
+
+new int(5) //egy darab int-et foglal, aminek öt lesz az értéke
+new int[5] //öt darab int-et foglal
+
+* - dereference operatoral tudjuk elkérni_*
+pl. int x = *p2; _*
+
+Ha van más megoldás érdemes azt használni, ahelyett, hogy mi kezeljük közvetlenül a memóriát.
+
+## C-style string karaktertömb
+A c-style stringek végén van egy \0
+Amint a while elér a \0-hoz a while hamis lesz
+
+# Free Store:
+Ha new-el foglalunk delete-el felkell szabadítani.
+
+# Vector:
+n elem sorozata, futás során változhat az elemek száma
+
+# Destructor:
+Fájlok, Socketek, Free Store használata esetén fontos a class-oknál
+A destructor automatikusan hívodik.
+
+virtual destructor, ha van egy base classunk. Hogy hívodjon a leszármazott desktruktor, ha az ős referencián keresztül használjuk. 
