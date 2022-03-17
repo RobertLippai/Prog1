@@ -5,10 +5,14 @@
 
 #include "../../gui/std_lib_facilities.h"
 
+bool has_only_digits(const string s){
+  return s.find_first_not_of( "0123456789" ) == string::npos;
+}
+
 struct Person {
 public:
 	//Default
-	Person() : first_name{"Guest"}, second_name{"Human"}, age{-1} {};
+	Person() : first_name{"Guest"}, second_name{"Human"}, age{1} {};
 
 	Person(string f_name, string s_name, int age) : first_name{f_name}, second_name{s_name}, age{age} {
 		if(first_name.empty() || second_name.empty()){
@@ -21,10 +25,10 @@ public:
 		const string illegal_chars = ";:\"'[]*&^%$#@!";
 		
 		string names = first_name + second_name;
-
+		
 		for (int i = 0; i < names.size(); ++i)
 		{
-			if(string(illegal_chars).find(f_name[i]) != string::npos){
+			if(string(illegal_chars).find(names[i]) != string::npos){
 				error("The name can not contain any of the following characters:\n" + illegal_chars + "\n");
 			}
 	    }
@@ -83,23 +87,30 @@ Person& operator>>(string& s, Person& p){
 		Anything else -> Gets dropped
 		
 		*/
-		switch(arg_counter){
-			case 0:
-				first_name = input;
-				break;
-			case 1:
-				second_name = input;
-				break;
-			case 2:
-				age = stoi(input);
-				break;
-			default:
-				//Drop unecessary info instead of error
-				break;
-				//error("Too many details given!");
-		}
-		arg_counter++;
+
+		if(has_only_digits(input)) { age = stoi(input); } 
+		else {
+			switch(arg_counter){
+				case 0:
+					first_name = input;
+					break;
+				case 1:
+					second_name = input;
+					break;
+				/*case 2:
+					age = stoi(input);
+					break;*/
+				default:
+					//Drop unecessary info instead of error
+					break;
+					//error("Too many details given!");
+				}
+				arg_counter++;
+			}
+
 	}
+
+	//cout << "Debug info: " << first_name << " " << second_name << " " << age << endl;
 
 	return p = Person(first_name, second_name, age);
 }
