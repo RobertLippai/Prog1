@@ -251,3 +251,73 @@ Fájlok, Socketek, Free Store használata esetén fontos a class-oknál
 A destructor automatikusan hívodik.
 
 virtual destructor, ha van egy base classunk. Hogy hívodjon a leszármazott desktruktor, ha az ős referencián keresztül használjuk. 
+
+# Másolás
+
+Deep Copy: az értékeet is lemásolja, egy új memória területre
+
+Shallow copy: csak a memória címet másoljuk, így ugyanarra fog mutatni, ha egyik helyen módosítunk az értéken, akkor az összes helyen módosul.
+
+## A return alapból másol. 
+
+## Az egy paraméteres konstruktor legyen explicit
+
+# Generikus programozás:
+Jelenleg a vectorunk csak egy típusra működik. Kezdetben sokszor szoktunk így, hogy elérjük, hogy először egy típusra jól és stabilan működjön.
+Késöbb pedig megcsináljuk, hogy bármilyen típusra működjön.
+A cél, hogy paraméterezhető legyen (vagyis bármilyen típusra jó lesz, hozzátudjuk majd írni, hogy milyen típust fogad el)
+pl. vector<double> itt a double a paraméter
+
+"Típusok és függvények paraméterezhetősége típusokkal és egésszekkel."
+
+## Template Definició:
+template<class T> class Vector {...};
+
+T a típus paraméter
+
+Függvényeknél a fordító kitudja következtetni a template paramétereket. 
+
+Type Safty: Predikátum függvény (Igazat vagy hamisart ad vissza), egy feltétel aminek a T type-nak megkell felelnie.
+
+## Erőforrás:
+Valamilyen eszközt amit lekell foglalunk és felkell szabadítanunk
+általában a konstruktorokban a legjobb ezeket lefoglalni
+És a destruktorban érdemes felszabadítani ezeket
+
+## Unique Pointer: 
+Egy smart pointer, ami felügyeli, hogy használjuk-e még az adott pointert.
+Így ez fogja a memória felszabadítást végezni. Így nekünk nem kell rá külön figyelni.
+
+## Make Unique Pointer:
+Mégegyszerűbb használni, ezt javasolt főként használni. 
+Itt még new-t sem kell használni.
+
+# De ha lehet ne használjunk semmilyen pointert!
+
+# RAII:
+## Scoped Resource Managment:
+Memória foglalás a konstruktorban
+Desktruktor felszabadít
+Így automatikusan van kezelve a memóriaterület.
+Ha hibát / kivételt kapunk, akkor is hívódik a scopeos objektumok desktruktora.
+
+Garanciák:
+* Vagy lefut sikeresen vagy a try catch miatt kivételt dob
+* Erős garancia: Minden elérhető változó, ugyanolyan értéket vesz fel, mint a hiba hívása előtt volt. (Tehát mintha mi sem történt volna)
+* No-throw: írjunk olyan kódot ami nem dob kivételt, kerüljük a new a threw és a dynamic cast használatát
+
+## Allocator: generikus eszköz, ami tetszőleges objektumokoknak tud memóriát foglalni
+alloc.allocate(s) s darab elemnek foglal memóriát.
+Olyan memóriát ami az adott allocator típusnak kell.
+
+## Iterátor: begin első elem, end utolsó utáni elem:
+* acces
+== ugyanarra mutat-e a két iterátor?
+++ következő elem
+
+end = utolsó utáni elemre mutat mindig!
+
+for(auto& x:v) minden elemet bejár begin és end között
+
+## unique_ptr.relase():
+// release, az unique pointerből átadjuk a jogot. Az birtokolja aki akarja. 
