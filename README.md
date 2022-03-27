@@ -42,7 +42,7 @@
 <tr>
 	<td>Week 6</td>
 	<td>Ch19</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Ápr 1.</td>
 </tr>
 <tr>
