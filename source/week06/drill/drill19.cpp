@@ -4,7 +4,8 @@
 
 #include "../../gui/std_lib_facilities.h"
 
-template<typename T> struct S { 
+template<typename T>
+struct S { 
 	explicit S(T value) : val{value} {}
 
 	T& get();
@@ -12,15 +13,12 @@ template<typename T> struct S {
 
 	//Task 9
 	
-	void set(T new_value) {
+	void set(const T& new_value) {
 		val = new_value;
 	}
 	
 	//Task 10
-	S<T> operator=(const T& new_value){
-		val = new_value;
-		return *this;
-	}
+	S& operator=(const T&);
 
 private:
 	T val;
@@ -34,6 +32,13 @@ T& S<T>::get() {
 template<typename T>
 const T& S<T>::get() const {
 	return val;
+}
+
+//Task 10
+template<typename T>
+S<T>& S<T>::operator=(const T& new_value){
+	val = new_value;
+	return *this;
 }
 
 template<typename T>
@@ -56,8 +61,7 @@ ostream& operator<<( ostream& os, vector<T>& vec){
 		if(i != 0){
 			os << "," ;
 		}
-		os << " " << vec.at(i);
-		i++;
+		os << " " << vec[i];
 	}
 
 	os << " }\n";
@@ -179,7 +183,7 @@ try {
 	double_S = double_val;
 	cout << "Good, you have entered: " << double_S.get() << endl;
 
-	cout << "Please enter any text: ";
+	cout << "Please enter a single word: ";
 	read_val(string_val);
 	string_S = string_val;
 	cout << "Good, you have entered: " << string_S.get() << endl;
@@ -191,9 +195,7 @@ try {
 	vector_S = vector_val;
 
 	cout << "Good, you have entered: ";
-	for(auto& element : vector_val){
-		cout << element << " ";
-	}
+	cout << vector_S.get();
 	cout << endl;
 
 	return 0;
