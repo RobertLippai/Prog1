@@ -1,6 +1,14 @@
 <snippet>
     <content><![CDATA[
-#include "../std_lib_facilities.h"
+/*
+	g++ $TM_FILENAME.cpp -o $TM_FILENAME.out -std=c++11 && ./$TM_FILENAME.out 
+*/
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <list> 
+#include <array> 
 
 int main(){
 	
@@ -8,7 +16,7 @@ int main(){
 	
 	return 0;
 }]]></content>
-	<tabTrigger>bevprog</tabTrigger>
+	<tabTrigger>prog1</tabTrigger>
     <scope>source.c++</scope>
-    <description>Bevezetés a Programozásba Snippet</description>
+    <description>Magasszintű Programozási Nyelvek 1 Snippet</description>
 </snippet>
