@@ -359,9 +359,14 @@ Ha rövid és egyértelmű
 
 # Week 8:
 Typesafty-re figyelni: pl. ha összeadunk figyelni kell, hogy lehet, hogy double-okat adunk össze és ilyenkor az összesnek is érdemes abba lenni. Hogy ne vesszen el, ha intben lenne.
+Ha nem figyelünk erre akkor nem a végösszeg fog truncetelödni, hanem már számítádsok közben is!!
 
 Azért csak 1 iterátor van a második paramtéternél, mert már az első iterátor pár meghatározza a hosszát.
 Ha még a 2. hosszabb, arra a részre már nem fogunk akkor sem menni!
+
+Lamda expression érdemes használni ha a kód rövid.
+Függvényobjektumot, ha hosszabb a kód.
+
 
 ## Map (Asszociativ):
 Vector: egéssz lesz az "index". Azaz egész a subscript
@@ -376,6 +381,13 @@ pl. map<string, int>
 Az iterátort léptetjük és dereferenciáljuk
 *res = *first;
 ++res;
-++first;
+++first;(((((((*
 
 
+## Bináris fa:
+String-nél ABC sorrend szerint rendez. (Magyar karakterekkel nem jó)
+
+# Week 10:
+C programozás
+Ez egy kiegészítő anyag
+Drill: 27-es kell még!!

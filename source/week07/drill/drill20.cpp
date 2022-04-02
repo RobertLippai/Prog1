@@ -2,86 +2,91 @@
 	g++ drill20.cpp -o drill20.out -std=c++11 && ./drill20.out 
 */
 
-//#include "../../gui/std_lib_facilities.h"
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include<list> 
-#include<array> 
+#include <list> 
+#include <array> 
 
 using namespace std;
 
-template<typename T>
-void printout(T& data){
-	for(auto& e : data){
-		cout << e << " ";
+template<typename Iterator>
+Iterator printout(Iterator first, Iterator last){
+	while(first != last){
+		cout << *first;
+		++first;
+		if(first != (last)){
+			cout << ", ";
+		}
 	}
+	return first;
 }
+
 
 // requires Input_iterator<Iter1>() && Output_iterator<Iter2>()
 template<typename Iter1, typename Iter2>
-Iter2 copy_own(Iter1 f1, Iter1 e1, Iter2 f2){
-/*
-that copies [f1,e1) to [f2,f2+(e1–f1)) and returns f2+(e1–f1) just like the
-standard library copy function. Note that if f1==e1 the sequence is empty,
-so that there is nothing to copy.
-*/
-	if(f1==e1){
-		//if empty
-		return f2;
+Iter2 my_copy(Iter1 first, Iter1 last, Iter2 first2){
+
+	while(first != last){
+		*first2 = *first;
+
+		++first;
+		++first2;
 	}
 
-	
-	for (Iter1 p = f1; p != e1; ++p)
-	{
-		*f2 = *p;
-		f2++;
-		//f2.begin()+(e1-f1) = p;
-		//cout << *p << " ";
-	}
-	return f2;
+	return first2;
+}
+
+template<typename Iterator, typename Value>
+void contains(Iterator first, Iterator last, Value x){
+
+	auto result = std::find(first, last, x);
+
+	if(result != last){
+		auto position = std::distance(first, result);
+		cout << "Contains at position: " << position << endl;
+	} else { cout << "Doesn't contain" << std::endl; }
+
 }
 
 int main(){
 
 	//Task 1,2,3
-	
-	//int s[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	array<int, 10> s = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int s[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 	vector<int> int_vec;
 	list<int> list_vec;
 
-	
 	for(auto& e : s){
 		int_vec.push_back(e);
 		list_vec.push_back(e);
 	}
 	
-	cout << "Printing: s ";
-	printout(s);
+	cout << "Printing first array: ";
+	printout(std::begin(s), std::end(s));
 	cout << endl;
 	
 	
-	cout << "Printing: int_vec ";
-	printout(int_vec);
+	cout << "Printing first vector: ";
+	printout(std::begin(int_vec), std::end(int_vec));
 	cout << endl;
 	
-	cout << "Printing: list_vec ";
-	printout(list_vec);
+	cout << "Printing first list: ";
+	printout(std::begin(list_vec), std::end(list_vec));
 	cout << endl;
-	//Task 4
-	int size_of_s = sizeof(s)/sizeof(s[0]);
-	
-	//int second_array[size_of_s];
-	array<int, 10> second_array;
-	
-	std::copy(s.begin(), s.end(), second_array.begin());
-	
+
+
+	//Task 4	
+	int second_array[10];
 	vector<int> second_vector = int_vec;
 	list<int> second_list = list_vec;
 	
+	std::copy(std::begin(s), std::end(s), std::begin(second_array));
+	//std::copy(std::begin(s), std::end(s), std::begin(second_vector));
+	//std::copy(std::begin(s), std::end(s), std::begin(second_list));
+	
+
 	//Task 5
-	cout << "Task 5" << endl << endl;
+	cout << endl << "Task 5" << endl << endl;
 	
 	for(auto& e : second_array){
 		e = e + 2;
@@ -93,51 +98,42 @@ int main(){
 		e = e + 5;
 	}
 	
-	cout << "Printing: s ";
+	cout << "Printing second array after increasing: ";
 	for(auto& e : second_array){
 		cout << e << " ";
 	}
 	cout << endl;
 	
-	cout << "Printing: int_vec ";
-	printout(second_vector);
+	cout << "Printing second vector afzer increasing: ";
+	printout(std::begin(second_vector), std::end(second_vector));
 	cout << endl;
 	
-	cout << "Printing: list_vec ";
-	printout(second_list);
+	cout << "Printing second list afzer increasing: ";
+	printout(std::begin(second_list), std::end(second_list));
 	cout << endl;
 	
 	
 	//Task 7
 	cout << "Task 7" << endl;
 	
-	copy_own(second_array.begin(), second_array.end(), second_vector.begin());
-	copy_own(second_list.begin(), second_list.end(), second_array.begin());
+	my_copy(std::begin(second_array), std::end(second_array), std::begin(second_vector));
+	my_copy(std::begin(second_list), std::end(second_list), std::begin(second_array));
 	
-	cout << "Printing Copied Second Array: ";
-	printout(second_array);
+	cout << "Printing Copied Second Vector: ";
+	printout(std::begin(second_vector), std::end(second_vector));
 	cout << endl;
 	
-	cout << "Printing Copid Second List: ";
-	printout(second_list);
+	cout << "Printing Copid Second Array: ";
+	printout(std::begin(second_array), std::end(second_array));
 	cout << endl;
 	
 	//Task 8
-	
-	/*auto result = find(int_vec.begin(), int_vec.end(), 3);
-	
-	if( result ==  std::end(int_vec)){
-		cout << "Can't find it" << endl;
-	}	else { cout << " Result: " << result; }*/
-	
-	int n2 = 2;
-	
-	auto result3 = std::find(begin(int_vec), end(int_vec), n2);
- 
-    	(result3 != std::end(int_vec))
-        ? std::cout << "v contains " << n2 << '\n'
-        : std::cout << "v does not contain " << n2 << '\n';
- 
+
+	cout << "Task 8" << endl << endl;
+
+	contains(std::begin(int_vec), std::end(int_vec), 3);
+	contains(std::begin(list_vec), std::end(list_vec), 27);
+
 	return 0;
 }
 
