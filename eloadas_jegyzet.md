@@ -321,3 +321,61 @@ for(auto& x:v) minden elemet bejár begin és end között
 
 ## unique_ptr.relase():
 // release, az unique pointerből átadjuk a jogot. Az birtokolja aki akarja. 
+
+
+# Week 7: STL
+Tárolók, algoritmusok, iterátorok
+
+Szekvencia tárolók
+
+Generizálás: úgy készítjük / átalakítjuk a kódot, hogy az ne függjön semmilyen típustól. Így típusmentes lesz.
+
+Miután nem függ a típustól algoritmusnak nevezzük.
+
+STL: C++ Std-ben van benne
+
+Algoritmusok és tárolók szétvannak választva. Az iterátorok segítenek, hogy az algoritmusok hozzáférjenek a tárolókhoz.
+
+Boost library, nagyon jó.
+
+## Iterator pár: 
+begin - legelső elem
+end - utolsó utáni elem! (nem létező elem!)
+
+* acces
+== ugyanarra mutat-e a két iterátor?
+++ iterátor léptetése
+-- iterátor léptetése (nem mindig van)
+[] (nem mindig van)
+
+## Pl. egy kereső függvényél: end() a visszatérés ha nincs benne a keresett elem
+
+## Nevesített objektum:
+Ha valami összetett dolog
+Ha valami több helyen kell
+
+## Lambda expression:
+Ha rövid és egyértelmű
+
+# Week 8:
+Typesafty-re figyelni: pl. ha összeadunk figyelni kell, hogy lehet, hogy double-okat adunk össze és ilyenkor az összesnek is érdemes abba lenni. Hogy ne vesszen el, ha intben lenne.
+
+Azért csak 1 iterátor van a második paramtéternél, mert már az első iterátor pár meghatározza a hosszát.
+Ha még a 2. hosszabb, arra a részre már nem fogunk akkor sem menni!
+
+## Map (Asszociativ):
+Vector: egéssz lesz az "index". Azaz egész a subscript
+Lista: itt nincs subscript
+Map: bármi lehet subscript. Kulcs-érték párok
+pl. map<string, int>
+	Ahol string = kulcs (map.first)
+	int = érték (map.second)
+
+
+## Másolásnál:
+Az iterátort léptetjük és dereferenciáljuk
+*res = *first;
+++res;
+++first;
+
+
