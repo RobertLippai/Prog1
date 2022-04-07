@@ -1,0 +1,26 @@
+empty bottle	2032	20.32
+street lights	457	12.3
+egg	789	52.1
+flowers	899	5132
+vase	1039	25.99
+chicken	79	5.12
+pair of scissors	354	92.30
+chocolate	54	55432
+egg beater	534	25.77
+pair of earrings	321	321.32
+catalogue	3445	5132
+rolling pin	3542	25.32
+cup	4786	564.12
+shampoo	598	687.32
+basketball	8984	45.132
+plush pony	564	12.54
+hair tie	763	6.1
+pail	78451	25.658
+rock	5631	45.32
+pair of socks	7315	564.1
+rug	5478	1255.1
+egg timer	32152	23.33
+belt	542	21.21
+cucumber	758	12.13
+pinecone	169	4.124
+bowl	3229	3.19

@@ -48,19 +48,19 @@
 <tr>
 	<td>Week 7</td>
 	<td>Ch20</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Ápr 8.</td>
 </tr>
 <tr>
 	<td>Week 8</td>
 	<td>Ch21</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Ápr 22.</td>
 </tr>
 <tr>
 	<td>Week 9</td>
 	<td>Ch21</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Ápr 22.</td>
 </tr>
 <tr>
@@ -78,7 +78,7 @@
 <tr>
 	<td>Week 12</td>
 	<td>Ch27</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Ápr 29.</td>
 </tr>
 </table>

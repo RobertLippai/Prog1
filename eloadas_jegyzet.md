@@ -390,4 +390,95 @@ String-nél ABC sorrend szerint rendez. (Magyar karakterekkel nem jó)
 # Week 10:
 C programozás
 Ez egy kiegészítő anyag
-Drill: 27-es kell még!!
+Drill: 27-es kell még!! De megvédeni nem kell majd.
+
+Modern C és C++ testvérek.
+Classic C (C89)
+C++ (C++98)
+
+Mi a C++ 14 szerint tanultunk
+
+new,class,bool C++ kulcsszó, C-ben viszont nem így lehet változónév is
+
+Majdnem minden C program fordítható g++-al.
+Ami C program az egyben C++ is.
+
+Könnyű átllás a kettő között.
+
+C alacsonyszíntű, rendszerprogramozási feladatokhoz.
+
+(Introduction to programming in python könyv)
+
+C-ben nincs gerikus és objektum oriántált programozás sem.
+Tag, osztály, kivétel, new-delete, referencia, functin overloading nincs
+Vector, maps, set, string sem működik
+STL algoritmusok nincsenek
+operátorokat nem lehet felüldefiniálni
+
+Írjunk ugy C kódot, hogy C++-ban is lehessen linkelni. (Ne használjuk a C++ kulcszavavakat változóneveknek)
+
+## Splint használata
+
+## Függvény szignatura(egyedileg azonosít egy függvényt): C név, C++ név és paraméterlista
+
+
+## Referencia: új név ugyanarra az objektumra
+C-ben van:
+* Függvénsyek, struct (strukturák)
+
+## Függvények C-ben
+Egy néven csak egy függvény
+Függvényargumentumok tipusát nem ellenörzi
+Nincs referencia
+Nincs tagfüggvény (Strukturának nem lehet csak adat tagja így)
+
+printf()
+printf("Hello, world\n");
+printf("double %g string %s int %i char %c", d, s,i, ch);
+
+%g double-re formáz
+%s stringre formáz
+%i intre
+%c characterre
+
+Akárhány változója lehet
+
+scanf \n-ig olvas
+
+printf és scanf nem type safe
+
+Tömbök, pointerek ugyanúgy működnek mint C-ben
+Tömb nem tudja a méretét, mert csak egy pointerünk van
+
+char* p = "asdf";
+char s[] = "asdf"; 
+Ugyanaz a 2, itt ez jó stringnek
+
+Stringek hasonlítása: s1 == s2 ugyanarra a tömbre mutatnak-e? 
+Ugyanaz-e a 2 string? strcmp(s1,s2)
+strlen(s) string hosszát adja vissza
+strcpy(s1,s2); másolás
+
+stdio.h printf(), scanf()
+
+## Free Store
+Malloc() és Free()
+
+Malloc(sizeof(int)*n) megszorozzuk n-el az int méretét és ennyi byte memóriát foglal______*
+Ezeket C++-ben ne használjuk!
+
+## Const használható
+
+## Makro, érdemes végig nagybetűvel jelölni.
+A fordító kicseréli a makró értékére az összes adott szót.
+
+#define MY_MAKRO 30
+Összes MY_MAKRO szó 30-ra lesz kicserélve
+
+## File I/O:
+
+0 - Standard Input
+1 - Strand Output
+2 - Strand Error
+
+## ^ ez nem hatványozás! Hanem XOR művelet.
