@@ -1,7 +1,7 @@
 <snippet>
     <content><![CDATA[
 /*
-	g++ $TM_FILENAME.cpp -o $TM_FILENAME.out -std=c++11 && ./$TM_FILENAME.out 
+	g++ $TM_FILENAME -o ${TM_FILENAME/(.+)\..+|.*/$1/:name}.out -std=c++11 && ./${TM_FILENAME/(.+)\..+|.*/$1/:name}.out 
 */
 
 #include <iostream>

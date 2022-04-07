@@ -8,15 +8,13 @@
 #include <list> 
 #include <array> 
 
-using namespace std;
-
 template<typename Iterator>
 Iterator printout(Iterator first, Iterator last){
 	while(first != last){
-		cout << *first;
+		std::cout << *first;
 		++first;
 		if(first != (last)){
-			cout << ", ";
+			std::cout << ", ";
 		}
 	}
 	return first;
@@ -44,8 +42,8 @@ void contains(Iterator first, Iterator last, Value x){
 
 	if(result != last){
 		auto position = std::distance(first, result);
-		cout << "Contains at position: " << position << endl;
-	} else { cout << "Doesn't contain" << std::endl; }
+		std::cout << "Contains at position: " << position << std::endl;
+	} else { std::cout << "Doesn't contain" << std::endl; }
 
 }
 
@@ -53,32 +51,32 @@ int main(){
 
 	//Task 1,2,3
 	int s[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	vector<int> int_vec;
-	list<int> list_vec;
+	std::vector<int> int_vec;
+	std::list<int> list_vec;
 
 	for(auto& e : s){
 		int_vec.push_back(e);
 		list_vec.push_back(e);
 	}
 	
-	cout << "Printing first array: ";
+	std::cout << "Printing first array: ";
 	printout(std::begin(s), std::end(s));
-	cout << endl;
+	std::cout << std::endl;
 	
 	
-	cout << "Printing first vector: ";
+	std::cout << "Printing first vector: ";
 	printout(std::begin(int_vec), std::end(int_vec));
-	cout << endl;
+	std::cout << std::endl;
 	
-	cout << "Printing first list: ";
+	std::cout << "Printing first list: ";
 	printout(std::begin(list_vec), std::end(list_vec));
-	cout << endl;
+	std::cout << std::endl << std::endl;
 
 
 	//Task 4	
 	int second_array[10];
-	vector<int> second_vector = int_vec;
-	list<int> second_list = list_vec;
+	std::vector<int> second_vector = int_vec;
+	std::list<int> second_list = list_vec;
 	
 	std::copy(std::begin(s), std::end(s), std::begin(second_array));
 	//std::copy(std::begin(s), std::end(s), std::begin(second_vector));
@@ -86,7 +84,7 @@ int main(){
 	
 
 	//Task 5
-	cout << endl << "Task 5" << endl << endl;
+	std::cout << "Task 5" << std::endl;
 	
 	for(auto& e : second_array){
 		e = e + 2;
@@ -98,63 +96,41 @@ int main(){
 		e = e + 5;
 	}
 	
-	cout << "Printing second array after increasing: ";
+	std::cout << "Printing second array after increasing: ";
 	for(auto& e : second_array){
-		cout << e << " ";
+		std::cout << e << " ";
 	}
-	cout << endl;
+	std::cout << std::endl;
 	
-	cout << "Printing second vector afzer increasing: ";
+	std::cout << "Printing second vector afzer increasing: ";
 	printout(std::begin(second_vector), std::end(second_vector));
-	cout << endl;
+	std::cout << std::endl;
 	
-	cout << "Printing second list afzer increasing: ";
+	std::cout << "Printing second list afzer increasing: ";
 	printout(std::begin(second_list), std::end(second_list));
-	cout << endl;
+	std::cout << std::endl << std::endl;
 	
 	
 	//Task 7
-	cout << "Task 7" << endl;
+	std::cout << "Task 7" << std::endl;
 	
 	my_copy(std::begin(second_array), std::end(second_array), std::begin(second_vector));
 	my_copy(std::begin(second_list), std::end(second_list), std::begin(second_array));
 	
-	cout << "Printing Copied Second Vector: ";
+	std::cout << "Printing Copied Second Vector: ";
 	printout(std::begin(second_vector), std::end(second_vector));
-	cout << endl;
+	std::cout << std::endl;
 	
-	cout << "Printing Copid Second Array: ";
+	std::cout << "Printing Copid Second Array: ";
 	printout(std::begin(second_array), std::end(second_array));
-	cout << endl;
+	std::cout << std::endl << std::endl;
 	
 	//Task 8
 
-	cout << "Task 8" << endl << endl;
+	std::cout << "Task 8" << std::endl;
 
 	contains(std::begin(int_vec), std::end(int_vec), 3);
 	contains(std::begin(list_vec), std::end(list_vec), 27);
 
 	return 0;
 }
-
-/*
-
-1. Define an array of int s with the ten elements { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }.
-2. Define a vector<int> with those ten elements.
-3. Define a list<int> with those ten elements.
-4. Define a second array, vector, and list, each initialized as a copy of the first
-array, vector, and list, respectively.
-
-5. Increase the value of each element in the array by 2; 
-increase the value of each element in the vector by 3; 
-increase the value of each element in the list by 5.
-6. copy operator
-7. Use your copy() to copy the array into the vector and to copy the list into
-the array.
-8. 8. Use the standard library find() to see if the vector contains the value 3
-and print out its position if it does; 
-use find() to see if the list contains the
-value 27 and print out its position if it does. The “position” of the first
-element is 0, the position of the second element is 1, etc. Note that if find()
-returns the end of the sequence, the value wasn’t found.
-*/
