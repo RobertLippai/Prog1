@@ -482,3 +482,32 @@ A fordító kicseréli a makró értékére az összes adott szót.
 2 - Strand Error
 
 ## ^ ez nem hatványozás! Hanem XOR művelet.
+
+
+
+# Chapter 24:
+
+A beépített long, int stb. és a műveletek használatakor,
+egy előre meghatározott méretben tárolódnak az adatok.
+
+Az int, long az egész számok egy közelítése csak matematikai szempontból.
+A float, double pedig a nem egész számok közelítése.
+
+Ezek miatt matematikai szempoontból néhány művelet nem elég precíz vagy egyenes rossz.
+A kerekítés miatt ha sok floating pointot használunk az eredmény egyre kevésbé lesz jó.
+
+Érdemes mindig megnézni az eredményt, hogy megegyezik-e az általunk elvárttal.
+
+Sokszor nehéz észrevenni.
+
+## Int overflow
+Az intek overflow-olhatnak, ezt könnyű észrevenni.
+
+## A sizeof segítségével megtudjuk nézni, hogy az adott platformon mennyi byte a mérete a typeoknak
+
+
+## A float és int mérete megyegyezik
+De a float nem tudja a legnagyobb int-et eltárolni!
+
+Ha egy floatot adunk át int-nek, akkor elveszlik a pontosság. (A nem egész rész teljesen, ami a pont 
+után van)
