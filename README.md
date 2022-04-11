@@ -72,7 +72,7 @@
 <tr>
 	<td>Week 10</td>
 	<td>Ch24</td>
-	<td>❌</td>
+	<td>✅</td>
 	<td>Ápr 22.</td>
 </tr>
 <tr>

@@ -1,3 +1,7 @@
+/*
+	g++ matrix_1.cpp -o matrix_1.out -std=c++14 && ./matrix_1.out 
+*/
+
 #include <iostream>
 #include "include/Matrix.h"
 

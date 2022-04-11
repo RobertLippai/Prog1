@@ -511,3 +511,122 @@ De a float nem tudja a legnagyobb int-et eltárolni!
 
 Ha egy floatot adunk át int-nek, akkor elveszlik a pontosság. (A nem egész rész teljesen, ami a pont 
 után van)
+
+A float to int csonkit! Nem pedig kerekít!
+
+## Array (Vector)
+Elemek sora, index segítségével érhető el egy elem
+
+## Mátrix (2 dimenziós tömb)
+Az alap C++ tömböt is felhasználhatjuk, hogy mátrixot készítsünk.
+Arrays of arrays
+
+double ad[3][4]; így nézne ki
+
+Hátrányai:
+A mérete fixált, csak a free store segítségével lehet futás közben méretet adni
+Nem lehet directben átadni (így pointerek segítségével kell, és kiszámolni a helyét stb)
+Az array nem tudja a méretét
+Nincsenek műveletek rá
+Nehéz és bugos lehet a használata
+
+## Mátrix Library
+
+Elvárások:
+Könnyű legyenk őket átadni functionoknak
+Legyenek műveletek
+Bármilyen méretűek és dimenziójuak lehessenek
+
+double, 2 a 2 itt a dimenziót jelenti
+Matrix<double,2> ad2(n1,n2); 
+
+n1 x n2-es mátrix
+
+0-tol indexeljük a sorokat, oszlopokat 
+
+2D mátrix: (row, column) vagy [row][column]
+
+A memóriábab row first orderben van
+
+dim1(), dim2() visszaadja az elemek szmámát az adott dimenzióban
+size() visszadja a Mátrixban lévő összes elem számát
+
+int* p = a.data();  // Pointer to the elements in memory  (row major order)
+
+## Mátrix egy része:
+
+a.slice(i); // the elements from a[i] to the last
+a.slice(i,n); // the n elements from a[i] to a[i+n–1] 
+
+Lehet bal oldalt assign-hoz is:
+
+a.slice(4,4) = a.slice(0,4); For example, if a starts out as
+
+Ha túlmegyünk a mátrix méretén üres mátrixot kapunk a slicban!
+
+a.slice(i,0) // egy üres mátrix
+a.slice(a.size(),2) // üres mert a legutolsó elem utáni 2 elemet néznénk
+
+## Copy Assigment és Copy Initializition is működik
+
+Matrix<int> a2 = a; // copy initialization
+a = a2; // copy assignment
+
+## Beéptetett műveletek
+
+a *= 7; // scaling: a[i]*=7 for each i (also +=, –=, /=, etc.) 
+a = 7; // a[i]=7 for each i
+
+Ezek mind használhatóak
+=, +=, –=, /=, *=, %=, ^=, &=_________*
+
+## Függvények használata mátrixokon
+
+Az apply segítségével
+
+a.apply(f); // a[i]=f(a[i]) for each element a[i] 
+a.apply(f,7); // a[i]=f(a[i],7) for each element a[i]
+
+Az apply és a műveletek megváltoztatják a mátrix értékét!
+Ha ezt nem szeretnénk érdemes egy újat létrehozni és úgy használni.
+
+b = apply(abs,a); // make a new Matrix with b(i)==abs(a(i))
+
+## a.apply(f) vs apply(a,f)
+
+Ha a.apply-t használunk az általában módosítja a mátrixot.
+
+Ha magában használjuk az apply-t az nem módosítja, de kell
+egy másik mátrix hozzá.
+
+## 2D Mátrix
+
+Az [i] operátor használata.
+Ha egy ilyet használunk akkor az az adott i sort fogja visszadni.
+
+Slice
+
+a.slice(i); // the rows from the a[i] to the last
+a.slice(i,n); // the rows from the a[i] to the a[i+n–1]
+
+Egy 2D Mátrix slice-ja is egy 2D Mátrix! (Csak kevesebb sorral)
+
+## 2D Mátrix sorcsere:
+
+a.swap_rows(1,2); // swap rows a[1] <–> a[2]
+
+swap_columns() nincsen
+
+## IO Műveletek
+MatrixIO.h headerben vannak
+
+cin és cout van benne
+
+## Random
+<random> header
+
+## STD matematika funkció hiba:
+
+errno értéket állít be
+
+(Nem működik)
