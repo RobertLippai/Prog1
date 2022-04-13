@@ -34,10 +34,6 @@ void readin(std::map<T, T2>& m, int n){
 
 }
 
-int calculate(int sum, const std::pair<std::string,int>& a){
-	return sum += a.second;
-}
-
 int main(){
 	
 	// Task 1
@@ -71,19 +67,30 @@ int main(){
 	std::cout << "Map Size: " << msi.size() << std::endl;
 
 	// Task 6-7
+	std::cout << "Task 5-6-7" << std::endl;
+	std::cout << "Please enter enter 10 value pairs (string int): " << std::endl;
+
 	readin(msi, 10);
+
+	std::cout << std::endl;
 
 	std::cout << "Map after readin(): " << std::endl;
 
 	print(msi);
 
 	// Task 8
+	std::cout << "Task 8" << std::endl;
 
-	auto sum = std::accumulate(std::begin(msi), std::end(msi), 0, calculate);
+	auto sum = std::accumulate(std::begin(msi), std::end(msi), 0, 
+		[] (int sum, const std::pair<std::string,int>& a){ return sum += a.second;}
+	);
 
 	std::cout << "Sum of the ints in MSI: " << sum << std::endl;
 
+	std::cout << std::endl;
+
 	// Task 9-10-11
+	std::cout << "Task 9" << std::endl;
 
 	std::map<int, std::string> mis;
 

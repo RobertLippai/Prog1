@@ -19,36 +19,44 @@ struct Item {
 	
 };
 
-bool compare_by_name(const Item& a, const Item& b) {
-	return a.name < b.name;
-}
+struct Compare_by_name {
+	bool operator()(const Item& a, const Item& b) {
+		return a.name < b.name;
+	}
+}; 
 
-bool compare_by_id(const Item& a, const Item& b) {
-	return a.id < b.id;
-}
+struct Compare_by_id {
+	bool operator()(const Item& a, const Item& b) {
+		return a.id < b.id;
+	}
+};
 
-bool compare_by_value(const Item& a, const Item& b) {
-	return a.value < b.value;
-}
+struct Compare_by_value {
+	bool operator()(const Item& a, const Item& b) {
+		return a.value < b.value;
+	}
+};
 
-bool compare_by_value_decreasing(const Item& a, const Item& b) {
-	return a.value > b.value;
-}
+struct Compare_by_value_decreasing {
+	bool operator()(const Item& a, const Item& b) {
+		return a.value > b.value;
+	}
+};
 
 
-struct Compare_by_name{
+struct Find_by_name{
 	std::string name;
 
-	Compare_by_name(std::string n) : name{n} {}
+	Find_by_name(std::string n) : name{n} {}
 	bool operator()(const Item& x) const {
 		return x.name == name;
 	}
 };
 
-struct Compare_by_id{
+struct Find_by_id{
 	int id;
 
-	Compare_by_id(int i) : id{i} {}
+	Find_by_id(int i) : id{i} {}
 
 	bool operator()(const Item& x) const {
 		return x.id == id;
@@ -79,9 +87,7 @@ int main(){
 		return 1;
 	}
 	
-	//std::string temp;
 	std::vector<std::string> temp{"","",""};
-	//Item temp_item;
 	int element_counter = 0;
 
 	for(char ch; fs.get(ch);){ 
@@ -92,26 +98,16 @@ int main(){
 				element_counter = 0;
 				vi.push_back(Item{temp[0], stoi(temp[1]), stod(temp[2])});
 				li.push_back(Item{temp[0], stoi(temp[1]), stod(temp[2])});
-				//std::cout << temp << std::endl;
-				/*for(const auto& element : temp){
-					std::cout << element;
-				}*/
-				//std::cout << std::endl;
-				temp[0] = "";
-				temp[1] = "";
-				temp[2] = "";
-				//break;
+				temp = {"", "", ""};
 			}
-			/*for(const auto& element : temp){
-				std::cout << element;
-			}*/
-			//std::cout << temp << std::endl;
-			if(ch=='\n'){continue;}
+
+			if(ch=='\n'){
+				continue;
+			}
 		}
 
 		temp[element_counter] += ch;
 	}
-
 
 	fs.close();
 
@@ -121,28 +117,27 @@ int main(){
 	// Task 2
 	std::cout << "Vector after sorted by name: " << std::endl << std::endl;
 
-	std::sort(std::begin(vi), std::end(vi), compare_by_name);
+	std::sort(std::begin(vi), std::end(vi), Compare_by_name());
 
 	printout(std::begin(vi), std::end(vi));
 
 	// Task 3
 	std::cout << "Vector after sorted by id: " << std::endl << std::endl;
 
-	std::sort(std::begin(vi), std::end(vi), compare_by_id);
+	std::sort(std::begin(vi), std::end(vi),	Compare_by_id());
 
 	printout(std::begin(vi), std::end(vi));
-
 
 	// Task 4
 	std::cout << "Vector after sorted by value (decreasing): " << std::endl << std::endl;
 
-	std::sort(std::begin(vi), std::end(vi), compare_by_value_decreasing);
+	std::sort(std::begin(vi), std::end(vi), Compare_by_value_decreasing());
 
 	printout(std::begin(vi), std::end(vi));
 
 
 	// Task 5
-	std::cout << "Printing out after added two new items " << std::endl << std::endl;
+	std::cout << "Vector after added two new items: " << std::endl << std::endl;
 
 	vi.push_back(Item("horse shoe", 99, 12.34));
 	vi.push_back(Item("Canon S400", 9988, 499.95));
@@ -152,28 +147,24 @@ int main(){
 
 	// Task 6-7
 
-	/*
-		list_name_delete1
-	*/
-
 	std::string vector_string_to_find_1 = "vase";
 	std::string vector_string_to_find_2 = "rock";
 
 	int vector_id_to_find_1 = 2032;
 	int vector_id_to_find_2 = 534;
 
-	auto vector_name_delete1 = std::find_if(std::begin(vi), std::end(vi), Compare_by_name(vector_string_to_find_1));
-	auto vector_name_delete2 = std::find_if(std::begin(vi), std::end(vi), Compare_by_name(vector_string_to_find_2));
-	auto vector_name_delete3 = std::find_if(std::begin(vi), std::end(vi), Compare_by_id(vector_id_to_find_1));
-	auto vector_name_delete4 = std::find_if(std::begin(vi), std::end(vi), Compare_by_id(vector_id_to_find_2));
+	auto vector_name_delete1 = std::find_if(std::begin(vi), std::end(vi), Find_by_name(vector_string_to_find_1));
+	auto vector_name_delete2 = std::find_if(std::begin(vi), std::end(vi), Find_by_name(vector_string_to_find_2));
+	auto vector_name_delete3 = std::find_if(std::begin(vi), std::end(vi), Find_by_id(vector_id_to_find_1));
+	auto vector_name_delete4 = std::find_if(std::begin(vi), std::end(vi), Find_by_id(vector_id_to_find_2));
 
 	auto vector_end = std::end(vi);
 
 	if(vector_name_delete1 == vector_end || vector_name_delete2 == vector_end || 
 		vector_name_delete3 == vector_end || vector_name_delete4 == vector_end){
 		
-		std::cerr << "Error" << std::endl;
-		return -1; // error
+		std::cerr << "Failed to find item(s)!" << std::endl;
+		return -1;
 	}
 
 	vi.erase(vector_name_delete1);
@@ -181,40 +172,42 @@ int main(){
 	vi.erase(vector_name_delete3);
 	vi.erase(vector_name_delete4);
 
-	std::cout << "Printing out after removing items " << std::endl << std::endl;
+	std::cout << "Vector after removing items: " << std::endl << std::endl;
 	printout(std::begin(vi), std::end(vi));
 
+	// ===================
 	// Repeating with list
+	// ===================
 
 	std::cout << "List after sorted by name: " << std::endl << std::endl;
 
-	li.sort(compare_by_name);
+	li.sort(Compare_by_name());
 
 	printout(std::begin(li), std::end(li));
 
 	// Task 3
 	std::cout << "List after sorted by id: " << std::endl << std::endl;
 
-	li.sort(compare_by_id);
+	li.sort(Compare_by_id());
 
-	printout(std::begin(vi), std::end(vi));
+	printout(std::begin(li), std::end(li));
 
 
 	// Task 4
 	std::cout << "List after sorted by value (decreasing): " << std::endl << std::endl;
 
-	li.sort(compare_by_value_decreasing);
+	li.sort(Compare_by_value_decreasing());
 
-	printout(std::begin(vi), std::end(vi));
+	printout(std::begin(li), std::end(li));
 
 
 	// Task 5
 	std::cout << "List after added two new items: " << std::endl << std::endl;
 
-	vi.push_back(Item("horse shoe", 99, 12.34));
-	vi.push_back(Item("Canon S400", 9988, 499.95));
+	li.push_back(Item("horse shoe", 99, 12.34));
+	li.push_back(Item("Canon S400", 9988, 499.95));
 
-	printout(std::begin(vi), std::end(vi));
+	printout(std::begin(li), std::end(li));
 
 	// Task 6-7
 
@@ -224,18 +217,18 @@ int main(){
 	int list_id_to_find_1 = 598;
 	int list_id_to_find_2 = 457;
 
-	auto list_name_delete1 = std::find_if(std::begin(li), std::end(li), Compare_by_name(list_string_to_find_1));
-	auto list_name_delete2 = std::find_if(std::begin(li), std::end(li), Compare_by_name(list_string_to_find_2));
-	auto list_id_delete1 = std::find_if(std::begin(li), std::end(li), Compare_by_id(list_id_to_find_1));
-	auto list_id_delete2 = std::find_if(std::begin(li), std::end(li), Compare_by_id(list_id_to_find_2));
+	auto list_name_delete1 = std::find_if(std::begin(li), std::end(li), Find_by_name(list_string_to_find_1));
+	auto list_name_delete2 = std::find_if(std::begin(li), std::end(li), Find_by_name(list_string_to_find_2));
+	auto list_id_delete1 = std::find_if(std::begin(li), std::end(li), Find_by_id(list_id_to_find_1));
+	auto list_id_delete2 = std::find_if(std::begin(li), std::end(li), Find_by_id(list_id_to_find_2));
 
 	auto list_end = std::end(li);
 
 	if(list_name_delete1 == list_end || list_name_delete2 == list_end || 
 		list_id_delete1 == list_end || list_id_delete2 == list_end){
 
-		std::cerr << "Error" << std::endl;
-		return -1; // error
+		std::cerr << "Failed to find item(s)!" << std::endl;
+		return -1;
 	}
 
 	li.erase(list_name_delete1);
@@ -243,7 +236,7 @@ int main(){
 	li.erase(list_id_delete1);
 	li.erase(list_id_delete2);
 
-	std::cout << "Printing out after removing items " << std::endl << std::endl;
+	std::cout << "List after removing items: " << std::endl << std::endl;
 	printout(std::begin(li), std::end(li));
 
 	return 0;
